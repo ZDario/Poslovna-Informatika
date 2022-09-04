@@ -1,5 +1,172 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magacinsko poslovanje</title>
+    <!-- Ukljucivanje JQuery biblioteke -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    <!-- Ukljucivanje Bootstrap-a za izgled aplikacije -->
+    <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+    
+    
+    <!-- Ukljucivanje js fajlova -->
+    <script src="js/app.js"></script>
+    <script src="js/poslovnaGodina.js"></script>
+</head>
 <body>
-<h1>Hello</h1>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
+                <li id="prometniDokumentDropdown" class="nav-item dropdown" onclick="promeniIzgledTaba('prometniDokumentDropdown')">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Prometni dokument
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <button class="dropdown-item" onclick="odrediPrikaz('prijemnica')">Prijemnica</button>
+                      <button class="dropdown-item" onclick="odrediPrikaz('otpremnica')">Otpremnica</button>
+                      <button class="dropdown-item" onclick="odrediPrikaz('medjumagacinskiPromet')">Međumagacinski promet</button>
+                    </div>
+                  </li>
+                  <li class="nav-item dropdown" id="robeUslugeDropdown" onclick="promeniIzgledTaba('robeUslugeDropdown')">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Robe/Ulsuge
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <button class="dropdown-item" onclick="odrediPrikaz('sveRobeUsluge')">Sve robe/usluge</button>
+                      <button class="dropdown-item" onclick="odrediPrikaz('dodavanjeRobeUsluge')">Dodavanje robe/usluge</button>
+                    </div>
+                  </li>
+                  
+                  <li class="nav-item dropdown" id="jedinicaMereDropdown" onclick="promeniIzgledTaba('jedinicaMereDropdown')">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Jedinice mere
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <button class="dropdown-item" onclick="odrediPrikaz('sveJediniceMere')">Sve jedinice mere</button>
+                      <button class="dropdown-item" onclick="odrediPrikaz('dodajJedinicuMere')">Dodaj jedinicu mere</button>
+                    </div>
+                  </li>
+                  
+                  <li class="nav-item dropdown" id="preduzeceDropdown" onclick="promeniIzgledTaba('preduzeceDropdown')">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Preduzeće
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <button class="dropdown-item" onclick="odrediPrikaz('svaPreduzeca')">Sva preduzeća</button>
+                      <button class="dropdown-item" onclick="odrediPrikaz('dodajPreduzece')">Dodaj preduzeće</button>
+                    </div>
+                  </li>
+                  
+                 <li class="nav-item dropdown" id="magacinDropdown" onclick="promeniIzgledTaba('magacinDropdown')">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Magacin
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <button class="dropdown-item" onclick="odrediPrikaz('sviMagacini')">Svi magacini</button>
+                      <button class="dropdown-item" onclick="odrediPrikaz('dodajMagacin')">Dodaj magacin</button>
+                    </div>
+                  </li>
+
+                  <!-- <li id="prikazMagKartDropdown" class="nav-item dropdown" onclick="promeniIzgledTaba('prikazMagKartDropdown')">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Promet magacinske kartice
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <button class="dropdown-item" onclick="odrediPrikaz('sviPrometiMagKart')">Svi prometi magacinskih kartica</button>
+                    </div>
+                  </li> -->
+                  <li id="prikazMagacinskihKarticaDropdown" class="nav-item dropdown" onclick="promeniIzgledTaba('prikazMagacinskihKarticaDropdown')">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Magacinske kartice
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <button class="dropdown-item" onclick="odrediPrikaz('sveMagacinskeKartice')">Sve magacinske kartice</button>
+                    </div>
+                  </li>
+
+                  <li id="prikazPartneraDropdown" class="nav-item dropdown" onclick="promeniIzgledTaba('prikazPartneraDropdown')">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Poslovni partneri
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <button class="dropdown-item" onclick="odrediPrikaz('sviPartneri')">Svi poslovni partneri</button>
+                      <button class="dropdown-item" onclick="odrediPrikaz('dodajPartnera')">Dodaj poslovnog partnera</button>
+
+
+                  <li class="nav-item dropdown" id="poslovnaGodinaDropdown" onclick="promeniIzgledTaba('poslovnaGodinaDropdown')">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Poslovna godina
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <button class="dropdown-item" onclick="odrediPrikaz('svePoslovneGodine')">Sve poslovne godine</button>
+                      <!-- <button class="dropdown-item" onclick="odrediPrikaz('dodajPoslovnuGodinu')">Dodaj poslovnu godinu</button> -->
+
+                    </div>
+                  </li>
+              </div>
+            </div>
+          </nav>
+    </header>
+    
+    <div class="container" style="padding-top: 3%;">
+    
+	      <!-- Prikaz svih poslovnih godina -->
+	      <table class="table" id="poslovneGodineTable" style="display: none;">
+	        <thead>
+	          <tr>
+	            <th style="text-align: center;">Broj godine</th>
+	            <th style="text-align: center;">Zaključena</th>
+	            <th style="text-align: center;">Naziv preduzeća</th>
+	          </tr>
+	        </thead>
+	        <tbody id="tbodyPoslovneGodine">
+	
+	        </tbody>
+	      </table>
+	      
+    
+    
+	      <!-- Forma za dodavanje poslovne godine -->
+	      <form id="dodajPoslovnuGodinu" style="display: none;">
+	        <div class="form-group">
+	            <label for="brojGodine">Broj godine:</label> <input type="text"
+	                                                        class="form-control" id="brojGodine" placeholder="Unesite broj godine">
+	        </div>
+	        <div class="form-group" id="nijeCekirana">
+	          <label for="zakljucenaGod">Zaključena</label>
+	          <input type="checkbox" class="form-control" id="zakljucenaGod"></input>
+	        </div>
+	        <div class="form-group" id="cekirana" style="display: none;">
+	          <label for="zakljucenaGodC">Zaključena</label>
+	          <input type="checkbox" class="form-control" id="zakljucenaGodC" checked></input>
+	        </div>
+	        <div id="selectPreduzecePoslovnaGodina" class="form-group">
+	          <label>Izaberite preduzece:
+	            <select class="form-control" id="preduzecePoslovnaGodina">
+	            </select>
+	          </label>
+	        </div>
+	
+	        <button id="btnDodajPoslovnuGodinu" onclick="submitPoslovnaGodina()" type="submit" class="btn btn-secondary">Dodaj</button>
+	        <button id="updatePoslovnaGodina" type="submit" class="btn btn-warning" style="display: none;">Izmeni</button>
+	      </form>
+      </div>
 </body>
 </html>
