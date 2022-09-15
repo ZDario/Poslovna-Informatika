@@ -75,20 +75,15 @@ function nivelacija(){
 
 function prikaziOdredjenuMagacinskuKarticu(id){
 
-   // alert('evo ga !!!!!');
     var magacinSifra = 0;
     var robaSifra = 0;
     var godinaSifra = 0;
 
-    /*magacinSifra = $("#inputMagacinForMagKart").val();
-    robaSifra = $("#inputRobaForMagKart").val();
-    godinaSifra = $("#inputGodinaForMagKart").val();*/
 
     console.log("Funckija: "+id);
     $.ajax({
         type: "GET",
         contentType : 'application/json; charset=utf-8',
-        // url : 'http://localhost:8080/api/magacinska-kartica/roba-ili-usluga/'+robaSifra+'/magacin/'+magacinSifra,
         url: 'http://localhost:8080/api/magacinska-kartica/'+id,
         success : function(result){
             var idMk = $("#idMagacinskeKartice");
@@ -117,7 +112,7 @@ function prikaziOdredjenuMagacinskuKarticu(id){
             sifraRobeUslugeMk.val(result.robaIliUsluga);
             nazivRobeUslugeMk.val(result.nazivRobeIliUsluge);
             jedinicaMereMk.val(result.jedinicaMereDto);
-            prosecnaCenaMk.val(result.cena);// nisam siguran je li ispravno
+            prosecnaCenaMk.val(result.cena);
             pocetnoStanjeKolicnskiMk.val(result.pocetnoStanjeKolicinski);
             pocetnoStanjeVrednosnoMk.val(result.pocetnoStanjeVrednosno);
             prometUlazaKolicnskiMk.val(result.prometUlazaKolicinski);
@@ -150,9 +145,8 @@ function prethodnaKartica(){
             kartica = k;
         }
     });
-    //console.log("Kartica: "+JSON.stringify(kartica))
+
     var index = kartice.indexOf(kartica);
-    //console.log("Index: "+index)
     if(index == 0){
         prethodna = kartice[kartice.length-1];
     }else{
