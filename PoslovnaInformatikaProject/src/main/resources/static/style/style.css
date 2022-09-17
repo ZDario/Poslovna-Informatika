@@ -3,3 +3,11 @@ body {
  	background-size: cover;
 	background-attachment: fixed;
 }
+
+#prikazMagKartDropdown {
+	margin-left: 50px;
+}
+
+#prometniDokumentDropdown{
+	margin-right: 50px;
+}

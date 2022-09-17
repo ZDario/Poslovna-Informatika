@@ -8,7 +8,6 @@ function ukloniRed(redId){
     $("#red"+redId).remove();
     redovi.forEach(element => {
         if(element.id == redId){
-           // console.log("U ifu sam!")
             const index = redovi.indexOf(element)
             redovi.splice(index,1);
         }
@@ -127,11 +126,8 @@ function proknjizi(){
     var stavke = [];
     var greska2=""
     console.log("Redovi: "+JSON.stringify(redovi));
-    // var i =0;
     redovi.forEach(red => {
-        //console.log(JSON.stringify(red))
-        // i++
-        // console.log("I: "+i)
+
         if($('#'+red.cena).val()==="" || $('#'+red.cena).val()==0){
             greskaCena = true;
             greska2 += "\nMorate uneti cenu za robu ili uslugu!";

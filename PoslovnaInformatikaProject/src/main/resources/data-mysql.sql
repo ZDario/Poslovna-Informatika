@@ -1,3 +1,11 @@
+DROP SCHEMA IF EXISTS magacinsko;
+CREATE SCHEMA magacinsko;
+USE magacinsko;
+
+SELECT * FROM promet_magacinske_kartice;
+SELECT * FROM magacinska_kartica;
+
+
 INSERT INTO PREDUZECE(id_preduzeca, naziv_preduzeca, adresa, telefon, PIB, MIB) VALUES(1, 'Koka produkt', 'Tvrdoski put bb Ljubinje', '0644094513', 12345, 54321);
 INSERT INTO PREDUZECE(id_preduzeca, naziv_preduzeca, adresa, telefon, PIB, MIB) VALUES(2, 'Farmavit', 'Svetosavska bb Ljubinje', '065192738', 98765, 56789);
 
@@ -29,11 +37,8 @@ INSERT INTO magacinska_kartica(id, pocetno_stanje_kolicinski, promet_ulaza_kolic
 VALUE (1, 200, 70, 30, 240,500000, 171000, 78000, 593000, 2471, 1, 2, 8);
 INSERT INTO magacinska_kartica(id, pocetno_stanje_kolicinski, promet_ulaza_kolicinski, promet_izlaza_kolicinski, ukupna_kolicina, pocetno_stanje_vrednosno, promet_ulaza_vrednosno, promet_izlaza_vrednosno, ukupna_vrednost, cena, magacin, poslovna_godina, roba_ili_usluga)
 VALUE (2, 500, 350, 400, 450,375000, 259000, 304000, 330000, 734, 1, 1, 7);
---INSERT INTO magacinska_kartica(id, pocetno_stanje_kolicinski, promet_ulaza_kolicinski, promet_izlaza_kolicinski, ukupna_kolicina, pocetno_stanje_vrednosno, promet_ulaza_vrednosno, promet_izlaza_vrednosno, ukupna_vrednost, cena, magacin, poslovna_godina, roba_ili_usluga)
---VALUE (3, 1.2, 1.6, 1.8, 1.1,1.1, 1.1, 1.1, 1.1, 1.1, 1, 2, 3);
-
 INSERT INTO magacinska_kartica(id, cena, pocetno_stanje_kolicinski, pocetno_stanje_vrednosno, promet_izlaza_kolicinski, promet_izlaza_vrednosno, promet_ulaza_kolicinski, promet_ulaza_vrednosno, ukupna_kolicina, ukupna_vrednost, magacin, poslovna_godina, roba_ili_usluga)
-VALUES(4, 20, 0, 0, 0, 0, 200, 4000, 200, 4000, 1, 2, 4);
+VALUES(3, 20, 0, 0, 0, 0, 200, 4000, 200, 4000, 1, 2, 4);
 
 
 INSERT INTO poslovni_partner(naziv_partnera,adresa_partnera,broj_telefona,email,PIB,MIB,preduzece) VALUES ('Partner1','Adresa1','123456789','email@example1.com',123124,321321,1);

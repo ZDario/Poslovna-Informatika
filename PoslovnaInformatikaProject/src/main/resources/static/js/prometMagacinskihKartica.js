@@ -89,7 +89,7 @@ function storniranje(redniBroj){
             prikazSvihPrometaMagKartica();
         },
         error :function(e){
-            alert('ne valja nesto kod storniranja');
+            alert('Nema dovoljno robe u magacinu/vec je stornirano');
         }
     });
 }
